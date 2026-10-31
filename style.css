@@ -1,0 +1,662 @@
+/* ============================================================
+ * style.css —— 全站统一样式（登录页 / 注册页 / 答题页共用）
+ * 视觉规范：浅蓝背景 + 白色圆角卡片 + 蓝色主按钮
+ * 主色仅三种：主蓝 #4a90d9、成功绿 #2e7d32、失败红 #e74c3c
+ * ============================================================ */
+
+/* ---------- 1. 全局重置 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  background: #f0f4ff;
+  color: #2c3e50;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- 2. 卡片容器 ---------- */
+.box {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px 32px 28px;
+  box-shadow: 0 6px 24px rgba(74, 144, 217, 0.12);
+}
+
+/* 答题页内容更多，卡片更宽 */
+.box.wide {
+  max-width: 720px;
+}
+
+/* 顶部品牌小标识 */
+.brand {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #4a90d9;
+  background: #f0f4ff;
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 23px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.sub {
+  text-align: center;
+  color: #8a94a6;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 22px;
+}
+
+/* ---------- 3. 表单控件 ---------- */
+.field {
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  color: #5a6478;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dfe6f3;
+  border-radius: 8px;
+  background: #fbfcff;
+  font-size: 15px;
+  font-family: inherit;
+  color: #2c3e50;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a94a6' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 34px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4a90d9;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.12);
+}
+
+/* ---------- 4. 按钮 ---------- */
+button {
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.18s, color 0.18s, transform 0.06s;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* 主按钮：通栏蓝色 */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin-top: 22px;
+  background: #4a90d9;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.btn-primary:hover {
+  background: #3b78c4;
+}
+
+/* 次要按钮：浅蓝描边 */
+.btn-ghost {
+  flex: 1;
+  padding: 11px;
+  background: #f0f4ff;
+  color: #4a90d9;
+  border: 1px solid #cfe0f7;
+  font-weight: 500;
+}
+
+.btn-ghost:hover {
+  background: #e2edfc;
+}
+
+/* 禁用状态 */
+button:disabled {
+  background: #d7e3f5;
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- 5. 提示信息 ---------- */
+.msg {
+  min-height: 22px;
+  margin-top: 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #e74c3c;
+  transition: color 0.18s;
+}
+
+.msg.success {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.msg.error {
+  color: #e74c3c;
+}
+
+/* 页脚链接 */
+.foot-link {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #eef2fa;
+  text-align: center;
+  font-size: 14px;
+  color: #8a94a6;
+}
+
+a {
+  color: #4a90d9;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 6. 答题页顶部工具条 ---------- */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  background: #f7faff;
+  border: 1px solid #eaf0fb;
+  border-radius: 10px;
+}
+
+.topbar-label {
+  font-size: 13px;
+  color: #5a6478;
+  margin-right: 6px;
+}
+
+.topbar select {
+  width: auto;
+  min-width: 190px;
+  padding: 8px 34px 8px 10px;
+  font-size: 13px;
+}
+
+.timer-switch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #5a6478;
+  cursor: pointer;
+  user-select: none;
+}
+
+.timer-switch input {
+  width: 15px;
+  height: 15px;
+  accent-color: #4a90d9;
+  cursor: pointer;
+}
+
+/* ---------- 7. 题目区 ---------- */
+.q-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.q-progress {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a90d9;
+  background: #f0f4ff;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+
+/* 倒计时圆标 */
+.q-timer {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a90d9;
+  background: #f0f4ff;
+  padding: 3px 12px;
+  border-radius: 999px;
+  min-width: 58px;
+  text-align: center;
+}
+
+.q-timer.warning {
+  color: #e74c3c;
+  background: #fdeaea;
+}
+
+/* 进度条 */
+.progress {
+  height: 6px;
+  background: #eaf0fb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.progress i {
+  display: block;
+  height: 100%;
+  background: #4a90d9;
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.q-text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* ---------- 8. 选项卡片 ---------- */
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fbfcff;
+  border: 1px solid #e6ecf7;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.16s, border-color 0.16s;
+}
+
+.option:hover {
+  background: #f0f4ff;
+  border-color: #cfe0f7;
+}
+
+.option.selected {
+  background: #eaf2fc;
+  border-color: #4a90d9;
+}
+
+.option input[type="radio"] {
+  margin-top: 4px;
+  accent-color: #4a90d9;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.opt-flag {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a90d9;
+  background: #eaf2fc;
+  border-radius: 50%;
+  margin-top: 1px;
+}
+
+.option.selected .opt-flag {
+  color: #ffffff;
+  background: #4a90d9;
+}
+
+.opt-text {
+  flex: 1;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+/* 判分后选项着色（结果回看时使用） */
+.option.correct {
+  background: #eaf7ee;
+  border-color: #2e7d32;
+}
+
+.option.correct .opt-flag {
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+.option.wrong {
+  background: #fdeaea;
+  border-color: #e74c3c;
+}
+
+.option.wrong .opt-flag {
+  background: #e74c3c;
+  color: #ffffff;
+}
+
+/* ---------- 9. 按钮行 ---------- */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-row button {
+  flex: 1;
+}
+
+.link-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button.logout {
+  width: 100%;
+  margin-top: 18px;
+  padding: 11px;
+  background: #ffffff;
+  color: #e74c3c;
+  border: 1px solid #f6d0cd;
+  font-weight: 500;
+}
+
+button.logout:hover {
+  background: #fdeaea;
+}
+
+/* ---------- 10. 成绩 / 结果区 ---------- */
+#scoreMsg {
+  margin-top: 4px;
+}
+
+.result-head {
+  text-align: center;
+  padding: 18px 14px;
+  background: #f7fbf8;
+  border: 1px solid #d7ecd9;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.score-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.score-sub {
+  font-size: 13px;
+  color: #5a6478;
+  margin-top: 6px;
+}
+
+.result-list {
+  list-style: none;
+}
+
+.result-item {
+  padding: 12px 14px;
+  border: 1px solid #eef2fa;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.result-item.ok {
+  border-left: 3px solid #2e7d32;
+}
+
+.result-item.no {
+  border-left: 3px solid #e74c3c;
+}
+
+.ri-title {
+  font-weight: 600;
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+
+.ri-line {
+  font-size: 13px;
+  color: #5a6478;
+  line-height: 1.7;
+}
+
+.mark {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 1px 9px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.mark.ok {
+  color: #2e7d32;
+  background: #eaf7ee;
+}
+
+.mark.no {
+  color: #e74c3c;
+  background: #fdeaea;
+}
+
+/* ---------- 11. 弹出面板（历史成绩 / 错题本） ---------- */
+.panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 45, 70, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel-inner {
+  width: 100%;
+  max-width: 460px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 12px 36px rgba(30, 45, 70, 0.22);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eef2fa;
+}
+
+.panel-head h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.panel-close {
+  background: #f0f4ff;
+  color: #4a90d9;
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+
+.panel-close:hover {
+  background: #e2edfc;
+}
+
+/* 历史成绩条目 */
+.record-item {
+  padding: 10px 12px;
+  border: 1px solid #eef2fa;
+  border-radius: 8px;
+  margin-bottom: 9px;
+}
+
+.record-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.record-top em {
+  font-style: normal;
+  color: #2e7d32;
+}
+
+.record-time {
+  font-size: 12px;
+  color: #8a94a6;
+  margin-top: 3px;
+}
+
+.empty-tip {
+  text-align: center;
+  color: #8a94a6;
+  font-size: 14px;
+  padding: 26px 0;
+}
+
+/* ---------- 12. 轻提示 Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 42px;
+  transform: translateX(-50%) translateY(12px);
+  background: rgba(44, 62, 80, 0.92);
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s, transform 0.22s;
+  z-index: 80;
+  max-width: 88vw;
+  text-align: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- 13. 移动端适配 ---------- */
+@media (max-width: 480px) {
+  body {
+    padding: 12px 12px;
+    align-items: flex-start;
+  }
+
+  .box {
+    padding: 26px 18px 22px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .topbar select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .q-text {
+    font-size: 15.5px;
+  }
+
+  .opt-text {
+    font-size: 14px;
+  }
+
+  /* 手机上按钮竖向排列，加大点击区域 */
+  .btn-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-row button {
+    padding: 13px;
+  }
+
+  .link-row {
+    flex-direction: column;
+  }
+
+  .score-text {
+    font-size: 16px;
+  }
+
+  .panel-inner {
+    padding: 18px 16px 14px;
+  }
+}

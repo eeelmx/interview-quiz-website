@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>答题 - 面试答题网站</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="box wide">
+    <h1>面试答题</h1>
+    <p id="welcome" class="sub"></p>
+
+    <!-- 工具条：选择试卷（多套试卷扩展） + 每题限时开关（倒计时扩展） -->
+    <div class="topbar">
+      <div>
+        <span class="topbar-label">试卷</span>
+        <select id="paperSelect" title="选择试卷"></select>
+      </div>
+      <label class="timer-switch" for="timerToggle">
+        <input type="checkbox" id="timerToggle">
+        <span>每题限时 30 秒</span>
+      </label>
+    </div>
+
+    <!-- 题目容器：由 quiz.js 动态渲染题目与 4 个单选选项 -->
+    <div id="questionArea"></div>
+
+    <!-- 上一题 / 下一题 / 提交 -->
+    <div class="btn-row">
+      <button id="prevBtn" class="btn-ghost">上一题</button>
+      <button id="nextBtn" class="btn-ghost">下一题</button>
+      <button id="submitBtn" class="btn-primary" style="margin-top:0; display:none;">提交答卷</button>
+    </div>
+
+    <!-- 结果 / 成绩区：提交后显示总分、正确率与逐题对错 -->
+    <div id="scoreMsg"></div>
+
+    <!-- 再答一次：提交后才显示 -->
+    <div class="btn-row" id="restartRow" style="display:none;">
+      <button id="restartBtn" class="btn-ghost">再答一次（清空本次答案）</button>
+    </div>
+
+    <!-- 扩展功能入口 -->
+    <div class="link-row">
+      <button id="recordsBtn" class="btn-ghost">历史成绩</button>
+      <button id="wrongBtn" class="btn-ghost">错题本</button>
+    </div>
+
+    <button id="logoutBtn" class="logout">退出登录</button>
+  </div>
+
+  <!-- 弹出面板：历史成绩 / 错题本共用 -->
+  <div id="panel" class="panel" hidden>
+    <div class="panel-inner">
+      <div class="panel-head">
+        <h3 id="panelTitle">历史成绩</h3>
+        <button id="panelClose" class="panel-close">关闭</button>
+      </div>
+      <div id="panelBody"></div>
+    </div>
+  </div>
+
+  <!-- 轻提示 -->
+  <div id="toast" class="toast"></div>
+
+  <!-- 先引入题库数据，再引入答题逻辑 -->
+  <script src="questions.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

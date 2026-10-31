@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册 - 面试答题网站</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="box">
+    <div class="brand">INTERVIEW QUIZ</div>
+    <h1>注册新账号</h1>
+    <p class="sub">填写以下信息创建你的账号</p>
+
+    <div class="field">
+      <label for="regUsername">用户名</label>
+      <input type="text" id="regUsername" placeholder="请输入用户名" autocomplete="username">
+    </div>
+
+    <div class="field">
+      <label for="regPassword">密码</label>
+      <input type="password" id="regPassword" placeholder="请输入密码" autocomplete="new-password">
+    </div>
+
+    <div class="field">
+      <label for="regConfirm">确认密码</label>
+      <input type="password" id="regConfirm" placeholder="请再次输入密码" autocomplete="new-password">
+    </div>
+
+    <button id="registerBtn" class="btn-primary">注 册</button>
+    <p id="regMsg" class="msg"></p>
+
+    <p class="foot-link">已有账号？<a href="login.html">去登录</a></p>
+  </div>
+
+  <!-- 页面底部引入逻辑文件：与登录页共用 app.js -->
+  <script src="app.js"></script>
+</body>
+</html>

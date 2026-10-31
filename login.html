@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 - 面试答题网站</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="box">
+    <div class="brand">INTERVIEW QUIZ</div>
+    <h1>面试答题网站</h1>
+    <p class="sub">请输入账号密码登录</p>
+
+    <div class="field">
+      <label for="loginUsername">用户名</label>
+      <input type="text" id="loginUsername" placeholder="请输入用户名" autocomplete="username">
+    </div>
+
+    <div class="field">
+      <label for="loginPassword">密码</label>
+      <input type="password" id="loginPassword" placeholder="请输入密码" autocomplete="current-password">
+    </div>
+
+    <button id="loginBtn" class="btn-primary">登 录</button>
+    <p id="loginMsg" class="msg"></p>
+
+    <p class="foot-link">还没有账号？<a href="register.html">去注册</a></p>
+  </div>
+
+  <!-- 页面底部引入逻辑文件：注册、登录、退出、成绩记录等函数都在 app.js 中 -->
+  <script src="app.js"></script>
+</body>
+</html>
